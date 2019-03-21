@@ -17,9 +17,10 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, './'),
     publicPath: '/dist/',
-    host: '127.0.0.1',
+    compress: true,
     port: 8080,
-    open: true
+    host: '0.0.0.0',
+    disableHostCheck: true,
   },
   resolve: {
     extensions: ['.ts', '.js'],
