@@ -32,7 +32,8 @@
   },
   "scripts": {
     "dev": "webpack --mode development && webpack-dev-server --mode development",
-    "build": "webpack --mode production && webpack-dev-server --mode production"
+    "build": "rm -rf dist && webpack --mode production && webpack-dev-server --mode production",
+    "deploy": "rm -rf deploy/dist && webpack --mode production --config webpack.deploy.js && webpack-dev-server --mode production --config webpack.deploy.js"
   },
   "repository": {
     "type": "git",

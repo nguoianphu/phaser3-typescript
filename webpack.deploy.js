@@ -2,11 +2,12 @@ var path = require('path');
 var pathToPhaser = path.join(__dirname, '/node_modules/phaser/');
 var phaser = path.join(pathToPhaser, 'dist/phaser.js');
 const TerserPlugin = require('terser-webpack-plugin');
+const JavaScriptObfuscator = require('webpack-obfuscator');
 
 module.exports = {
     entry: './src/games/flappy-bird/game.ts',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'deploy/dist'),
         filename: 'bundle.js'
     },
     module: {
@@ -17,7 +18,7 @@ module.exports = {
     },
     devServer: {
         contentBase: path.resolve(__dirname, './'),
-        publicPath: '/dist/',
+        publicPath: '/deploy/',
         compress: true,
         port: 8080,
         host: '0.0.0.0',
@@ -39,5 +40,13 @@ module.exports = {
                 }
             })
         ]
-    }
+    },
+    plugins: [
+        new JavaScriptObfuscator(
+            {
+                rotateUnicodeArray: true
+            },
+            []
+        )
+    ]
 };
