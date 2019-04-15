@@ -4,7 +4,7 @@ var phaser = path.join(pathToPhaser, 'dist/phaser.js');
 const TerserPlugin = require('terser-webpack-plugin');
 const JavaScriptObfuscator = require('webpack-obfuscator');
 
-module.exports = {
+module.exports = env => ({
     entry: './src/games/flappy-bird/game.ts',
     output: {
         path: path.resolve(__dirname, 'deploy/dist'),
@@ -48,5 +48,6 @@ module.exports = {
             },
             []
         )
-    ]
-};
+    ],
+ 
+});
